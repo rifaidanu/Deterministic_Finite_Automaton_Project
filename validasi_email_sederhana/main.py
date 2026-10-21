@@ -1,7 +1,7 @@
 def validasi_email_dfa(email):
     state = 'q0'  #State awal
     for char in email:
-        if state == 'q0': #Membaca username
+        if state == 'q0': #membaca username
             if char.isalnum() or char in ['_', '.']:
                 state = 'q0'
             elif char == '@':
@@ -9,13 +9,13 @@ def validasi_email_dfa(email):
             else:
                 state = 'q_trap'
                 
-        elif state == 'q1': #Membaca karakter pertama domain
+        elif state == 'q1': #membaca karakter pertama domain
             if char.isalnum():
                 state = 'q2'
             else:
                 state = 'q_trap'
                 
-        elif state == 'q2': #Membaca nama domain
+        elif state == 'q2': #membaca nama domain
             if char.isalnum():
                 state = 'q2'
             elif char == '.':
@@ -23,7 +23,7 @@ def validasi_email_dfa(email):
             else:
                 state = 'q_trap'
                 
-        elif state == 'q3': #Membaca huruf pertama ekstensi
+        elif state == 'q3': #membaca huruf pertama ekstensi
             if char.isalpha():
                 state = 'q4'
             else:
